@@ -1,0 +1,18 @@
+{
+  "name": "testingjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon recursion.js",
+    "testing": "nodemon Testing.js",
+    "iterator": "nodemon iterator.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
