@@ -4,7 +4,7 @@ const name = {'name': 'John'};
 myWeakSet.add(name); 
 
 console.log(myWeakSet.has(name)); // true
-
+console.log(typeof myWeakSet); // object
 
 console.log('------------------ execRecursively ----------------');
 // Execute a callback on everything stored inside an object
@@ -39,5 +39,7 @@ const foo = {
 foo.bar.baz = foo; // Circular reference!
 
 execRecursively((obj) => console.log(obj), foo);
+
+
 
   

@@ -1,6 +1,7 @@
 const mySet = new Set([1,2,3,4,5]);
 
 console.log(mySet); //Set(5) {1, 2, 3, 4, 5 }
+console.log(typeof mySet); //object
 
 // add a new element
 mySet.add(6);
