@@ -1,24 +1,45 @@
-// pollyfil for promise.all
+// console.log(a);
+// console.log(b);
 
-const p1 = Promise.resolve(2)
-const p2 = Promise.resolve("3")
-Promise.all([p1,p2]).then(res => console.log(res)) // this logs [2, "3"]
- 
-function MyPromiseAll(promises){
- const innerPromise = new Promise((res, rej) => {    
-    
-    const result = [];
-    promises.map((promise) => {
-        console.log(promise);
-        const response = promise.then((res) => { 
-            console.log('res = ', res);
-            result.push(res);
-        });
-        console.log(response);
-    });
-    console.log('result = ', result);
-    return result;
- })
- return innerPromise;
+// var a = b = 5; // b is not defined
+
+console.log(1 < 2 < 3); // 1 < 2 = true, true < 3 = 1 < 3 = true
+console.log( 3 > 2 > 1); // 3 > 2 = true, true > 1 = 1 > 1 = false
+
+
+globalThis.name = 'John';
+
+function test() {
+    name = 'Sushil';
+    const foo = () => {
+        console.log(this.name);
+    }
+
+    foo();
 }
-MyPromiseAll([p1,p2]).then(res => console.log(res)) // this should also log [2, "3"]
+
+test();
+
+function test123() {
+age = 30;
+var obj = {
+    age: 15,
+    foo: () => {
+        console.log(this.age);
+    }
+}
+
+obj.foo();
+}
+
+test123();
+
+
+(function() {
+    //console.log(a, b); // b is not defined becuase b doen'st have decleartion, it has only initialization
+    var a = b = 3;
+    console.log(a, b); // 3, 3
+})();
+// console.log(a); // a is not defined
+
+
