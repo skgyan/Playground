@@ -1,12 +1,12 @@
 function currying(fn) {
-
     return function curried(...args) {
+        
         console.log('curried args => ', args, ' args.length = ', args.length, ' fn.length = ', fn.length);
+
         if(args.length >= fn.length) {
             console.log('return fn(...args)', 'fn.length = ', fn.length);
             return fn(...args);
-        }
-        else {
+        } else {
             return curried.bind(null, ...args);
         }
     }
