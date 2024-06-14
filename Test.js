@@ -1,31 +1,20 @@
-const throttle = (fn, delay) => {
-    let params = [];
-    let timer = null;
-
-    return function(...args) {
-        params.push(...args);
-
-        if(timer !== null) return;
-
-        timer = setTimeout(()=>{
-            fn(...params);
-            params = [];
-            timer = null;
-        }, delay);
+function optimizedTemp(arr, int) {
+    let writeIndex = 0; // Index to write non-consecutive elements
+  
+    for (let i = 0; i < arr.length; i++) {
+      const currentItem = arr[i];
+      if (i === 0 || arr[i - 1] !== currentItem) {
+        arr[writeIndex++] = currentItem; // Write only non-consecutive elements
+      }
     }
-}
-
-
-// test
-let prev = Date.now();
-
-const test = (...args) => {
-    console.log('test called after ', Date.now() - prev, ' ms', ...args);
-    prev = Date.now();
-}
-
-const throttledTest = throttle(test, 50);
-
-setTimeout(() => throttledTest('call 1'), 10);
-setTimeout(() => throttledTest('call 2'), 30);
-setTimeout(() => throttledTest('call 3'), 100);
+  
+    // Truncate the array to remove remaining elements after writeIndex
+    arr.length = writeIndex;
+    return arr;
+  }
+  
+  const arr = [1, 1, 2, 2, 2, 1, 3, 1, 1];
+  console.log(optimizedTemp(arr, 3)); // Output: [3, 1, 1]
+  
+  // Repeat for other test cases (arr2 and arr3)
+  
