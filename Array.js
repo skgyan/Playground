@@ -22,6 +22,7 @@ console.log('array = ', array); // [1, 2]
 console.log('----- delete array[0] -----');
 console.log(delete array[0]);
 console.log('array = ', array); // [empty, 2]
+console.log('array.length = ', array.length);
 
 console.log('----- array.splice(1, 2) -----');
 const arr = [1, , 3, 4, , 6];
@@ -32,8 +33,8 @@ console.log('----- array.reduce -----');
 //  [].reduce((acc, cur) => acc + cur); // TypeError 
 console.log([0].reduce((acc, cur) => acc + cur)); // 0 - either array has an element or initial value is passed
 console.log([].reduce((acc, cur) => acc + cur, 0)); // 0 - either array has an element or initial value is passed
-
-
+console.log([1].reduce((acc, cur) => acc + cur)); // 0 - either array has an element or initial value is passed
+console.log([].reduce((acc, cur) => acc + cur, 1)); // 0 - either array has an element or initial value is passed
 
 console.log('---------------------- Sparse Array ------------------------');  
 const b = [1, 2, , , 5]; // [ 1, 2, <2 empty items>, 5 ];
@@ -43,7 +44,8 @@ for (const item of b) {
     console.log(item); // 1, 2, undefined, undefined, 5
 }
 
-const mapped = b.map((item) => item || 0); // [ 1, 2, <2 empty items>, 5 ]
+console.log('---------------------- map ------------------------');
+const mapped = b.map((item) => item * 2); // [ 1, 2, <2 empty items>, 5 ]
 console.log(mapped); // [ 1, 2, <2 empty items>, 5 ]
 
 b.forEach((item) => console.log(item)); // 1, 2, 5 - skips the empty items
@@ -51,5 +53,9 @@ b.forEach((item) => console.log(item)); // 1, 2, 5 - skips the empty items
 const filtered = b.filter((item) => item); // [ 1, 2, 5 ]
 console.log(filtered); 
 
-const hasFalsy = b.some((item) => !item); // false
+console.log('---------------------- some ------------------------');
+const hasFalsy = b.some((item) => { 
+    console.log(item);
+    return !item
+}); // false
 console.log(hasFalsy);
